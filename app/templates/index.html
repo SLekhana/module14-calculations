@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Manager</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Calculation Manager</h1>
+            <div class="auth-section" id="authSection">
+                <button id="showLogin">Login</button>
+                <button id="showRegister">Register</button>
+            </div>
+            <div class="auth-section hidden" id="userSection">
+                <span class="user-info">Welcome, <strong id="userInfo"></strong></span>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+
+        <!-- Message Alert -->
+        <div id="message" class="alert hidden"></div>
+
+        <!-- Login Form -->
+        <div class="card" id="loginForm">
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div class="card hidden" id="registerForm">
+            <h2>Register</h2>
+            <form>
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required minlength="6">
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <!-- Calculation Form (Hidden until logged in) -->
+        <div class="card hidden" id="calculationSection">
+            <h2>Create New Calculation</h2>
+            <form id="calculationForm">
+                <div class="form-group">
+                    <label for="operation">Operation</label>
+                    <select id="operation" required>
+                        <option value="add">Addition (+)</option>
+                        <option value="subtract">Subtraction (-)</option>
+                        <option value="multiply">Multiplication (×)</option>
+                        <option value="divide">Division (÷)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="operand1">First Number</label>
+                    <input type="number" id="operand1" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label for="operand2">Second Number</label>
+                    <input type="number" id="operand2" step="any" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Calculate</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Calculations List (Hidden until logged in) -->
+        <div class="card hidden" id="calculationsSection">
+            <h2>Your Calculations</h2>
+            <div class="calculations-grid" id="calculationsList"></div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <script>
+        // Show calculation sections when user is logged in
+        const userSection = document.getElementById('userSection');
+        const calculationSection = document.getElementById('calculationSection');
+        const calculationsSection = document.getElementById('calculationsSection');
+
+        function showUserSection() {
+            authSection.classList.add('hidden');
+            userSection.classList.remove('hidden');
+            calculationSection.classList.remove('hidden');
+            calculationsSection.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+            registerForm.classList.add('hidden');
+        }
+
+        function showAuthSection() {
+            authSection.classList.remove('hidden');
+            userSection.classList.add('hidden');
+            calculationSection.classList.add('hidden');
+            calculationsSection.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
