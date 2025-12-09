@@ -1,0 +1,16 @@
+{
+  "name": "module14-calculations",
+  "version": "1.0.0",
+  "description": "Module 14: BREAD Functionality for Calculations",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "Lekhana Sandra",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}
